@@ -11,50 +11,29 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var circle: SKShapeNode?
     let cam = SKCameraNode()
-    
-    let arrowCategory: UInt32 = 0x1 << 0
-    let ballCategory: UInt32 = 0x1 << 1
     private var isAddingNewPlatforms: Bool = false
-    
+    private var vehicles: [Vehicle] = []
     private var platformsGenerator: PlatformsGenerator?
     
     override func didMove(to view: SKView) {
         configureViews()
-        self.addChild(getCircle())
-        self.platformsGenerator = PlatformsGenerator(startingPoint: CGPoint(x: 0, y: 0))
-        platformsGenerator?.dificulty = 75
-        platformsGenerator?.numberOfPlatforms = 200
-        let platforms = platformsGenerator?.generatePlatformsFrom()
-        
-        platforms?.forEach({self.addChild($0)})
+        configurePlatforms()
+        addVehicles()
     }
     
-    func getCircle() -> SKShapeNode {
-        circle = SKShapeNode(circleOfRadius: 10)
-        circle?.position.x = 100
-        circle?.position.y = 100
-        circle?.fillColor = UIColor.red
-        circle?.zPosition = 1
-        circle?.lineWidth = 0
-        circle?.lineCap = CGLineCap(rawValue: 1)!
-        circle?.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        circle?.physicsBody?.isDynamic = true
-        circle?.physicsBody?.restitution = 0.7
-        circle?.physicsBody?.friction = 0.5
-        circle?.physicsBody?.usesPreciseCollisionDetection = true
-        circle?.physicsBody?.allowsRotation = true
-        
-        let line = SKShapeNode(rect: CGRect(x: 0, y: 0, width: 2, height: 10))
-        line.fillColor = UIColor.white
-        line.lineWidth = 1
-        circle?.addChild(line)
-        circle?.physicsBody?.affectedByGravity = true
-        
-        //        let action = SKAction.repeatForever(SKAction.rotate(byAngle: .pi/4, duration: 1/20))
-        
-        return circle!
+    func addVehicles() {
+        for i in 1...10 {
+            var points: [CGPoint] = []
+            for _ in 1...6 {
+                points.append(CGPoint(x: Utilities.sharedInstance.randomNumber(inRange: -50...50), y: Utilities.sharedInstance.randomNumber(inRange: -50...50)))
+            }
+            let wheel = Wheel(positionInVehicle: CGPoint(x: 10, y: 10),radius: CGFloat(i))
+            let wheel2 = Wheel(positionInVehicle: CGPoint(x: 20, y: 20),radius: CGFloat(i + 5))
+            let vehicle = Vehicle(points: points, [wheel, wheel2])
+            self.addChild(vehicle)
+            self.vehicles.append(vehicle)
+        }
     }
     
     func getAnotherPlatformToExisting(existingPlatform: SKSpriteNode) -> SKSpriteNode {
@@ -77,17 +56,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.scene?.size = (view?.bounds.size)!
         self.view?.backgroundColor = UIColor.white
         self.backgroundColor = UIColor.white
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
         self.physicsWorld.contactDelegate = self
-        self.scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.scene?.anchorPoint = CGPoint(x: 1, y: 1)
         self.view?.showsPhysics = true
         self.camera = cam
     }
     
+    func configurePlatforms() {
+        self.platformsGenerator = PlatformsGenerator(startingPoint: CGPoint(x: -((self.view?.bounds.width)!/2) , y: -(self.view?.bounds.height)!/2))
+        platformsGenerator?.dificulty = 75
+        platformsGenerator?.numberOfPlatforms = 200
+        let platforms = platformsGenerator?.generatePlatformsFrom()
+        platforms?.forEach({self.addChild($0)})
+    }
+    
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        if let circle = self.circle {
-            cam.position = circle.position
+        sortVehicles()
+        if let vehicle = getLeader() {
+            cam.position = vehicle.position
             if let lastGeneratedNode = platformsGenerator?.getLastGeneratedNode() {
                 if !isAddingNewPlatforms && cam.frame.intersects(lastGeneratedNode.frame) {
                     isAddingNewPlatforms = true
@@ -99,8 +86,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func getLeader() -> SKShapeNode? {
+        return vehicles.first
+    }
+    
+    func sortVehicles() {
+        vehicles = vehicles.sorted(by: {distanceFromZeroPoint(vehicle: $0) > distanceFromZeroPoint(vehicle: $1)})
+    }
+    
+    func distanceFromZeroPoint(vehicle: Vehicle) -> CGFloat {
+        return vehicle.position.x
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        circle?.physicsBody?.applyImpulse(CGVector(dx: 1, dy: 0))
+        vehicles.forEach({$0.applyForce(1000)})
     }
     
     override func didSimulatePhysics() {

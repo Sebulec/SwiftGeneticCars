@@ -15,6 +15,9 @@
 		900823361FA133EC00F116B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 900823341FA133EC00F116B8 /* Main.storyboard */; };
 		900823381FA133EC00F116B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 900823371FA133EC00F116B8 /* Assets.xcassets */; };
 		9008233B1FA133EC00F116B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 900823391FA133EC00F116B8 /* LaunchScreen.storyboard */; };
+		902F13DC1FB781390058E432 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F13DB1FB781390058E432 /* GameStats.swift */; };
+		902F13E11FB786E10058E432 /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F13E01FB786E10058E432 /* Solution.swift */; };
+		9084AA131FB76064004AA9F3 /* Wheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9084AA121FB76064004AA9F3 /* Wheel.swift */; };
 		9098AE3F1FB37F8C00DAB1FF /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE3E1FB37F8C00DAB1FF /* Vehicle.swift */; };
 		9098AE411FB3801300DAB1FF /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE401FB3801300DAB1FF /* Platform.swift */; };
 		9098AE431FB3819C00DAB1FF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE421FB3819C00DAB1FF /* Utilities.swift */; };
@@ -33,7 +36,10 @@
 		900823371FA133EC00F116B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9008233A1FA133EC00F116B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9008233C1FA133EC00F116B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		902F13DB1FB781390058E432 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
+		902F13E01FB786E10058E432 /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
 		902F6F861FADE4D0001FC637 /* grass.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass.jpg; sourceTree = "<group>"; };
+		9084AA121FB76064004AA9F3 /* Wheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheel.swift; sourceTree = "<group>"; };
 		9098AE3E1FB37F8C00DAB1FF /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		9098AE401FB3801300DAB1FF /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		9098AE421FB3819C00DAB1FF /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -71,6 +77,10 @@
 		900823291FA133EC00F116B8 /* GeneticCars */ = {
 			isa = PBXGroup;
 			children = (
+				902F13DF1FB786D10058E432 /* GeneticAlgorithm */,
+				902F13DE1FB7864F0058E432 /* Map */,
+				902F13DD1FB786210058E432 /* GameLogic */,
+				9084AA141FB76480004AA9F3 /* Car */,
 				9008232A1FA133EC00F116B8 /* AppDelegate.swift */,
 				9008232C1FA133EC00F116B8 /* GameScene.sks */,
 				9008232E1FA133EC00F116B8 /* Actions.sks */,
@@ -81,13 +91,44 @@
 				900823391FA133EC00F116B8 /* LaunchScreen.storyboard */,
 				9008233C1FA133EC00F116B8 /* Info.plist */,
 				902F6F861FADE4D0001FC637 /* grass.jpg */,
-				9098AE3E1FB37F8C00DAB1FF /* Vehicle.swift */,
-				9098AE401FB3801300DAB1FF /* Platform.swift */,
 				9098AE421FB3819C00DAB1FF /* Utilities.swift */,
-				9098AE441FB38B3200DAB1FF /* PlatformsGenerator.swift */,
 				9098AE461FB3C5FF00DAB1FF /* Extensions.swift */,
 			);
 			path = GeneticCars;
+			sourceTree = "<group>";
+		};
+		902F13DD1FB786210058E432 /* GameLogic */ = {
+			isa = PBXGroup;
+			children = (
+				902F13DB1FB781390058E432 /* GameStats.swift */,
+			);
+			path = GameLogic;
+			sourceTree = "<group>";
+		};
+		902F13DE1FB7864F0058E432 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				9098AE401FB3801300DAB1FF /* Platform.swift */,
+				9098AE441FB38B3200DAB1FF /* PlatformsGenerator.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		902F13DF1FB786D10058E432 /* GeneticAlgorithm */ = {
+			isa = PBXGroup;
+			children = (
+				902F13E01FB786E10058E432 /* Solution.swift */,
+			);
+			path = GeneticAlgorithm;
+			sourceTree = "<group>";
+		};
+		9084AA141FB76480004AA9F3 /* Car */ = {
+			isa = PBXGroup;
+			children = (
+				9098AE3E1FB37F8C00DAB1FF /* Vehicle.swift */,
+				9084AA121FB76064004AA9F3 /* Wheel.swift */,
+			);
+			path = Car;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,14 +205,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9084AA131FB76064004AA9F3 /* Wheel.swift in Sources */,
 				9098AE431FB3819C00DAB1FF /* Utilities.swift in Sources */,
 				9098AE411FB3801300DAB1FF /* Platform.swift in Sources */,
 				9098AE3F1FB37F8C00DAB1FF /* Vehicle.swift in Sources */,
+				902F13E11FB786E10058E432 /* Solution.swift in Sources */,
 				9098AE471FB3C5FF00DAB1FF /* Extensions.swift in Sources */,
 				900823311FA133EC00F116B8 /* GameScene.swift in Sources */,
 				900823331FA133EC00F116B8 /* GameViewController.swift in Sources */,
 				9098AE451FB38B3200DAB1FF /* PlatformsGenerator.swift in Sources */,
 				9008232B1FA133EC00F116B8 /* AppDelegate.swift in Sources */,
+				902F13DC1FB781390058E432 /* GameStats.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,7 +23,6 @@ class PlatformsGenerator {
     }
     
     func generatePlatformsFrom() -> [SKNode] {
-        print("generate platforms")
         var lastInsertedPlatform : SKNode?
         if !platforms.isEmpty {
             lastInsertedPlatform = platforms.last!
@@ -37,6 +36,8 @@ class PlatformsGenerator {
             startingPoint = CGPoint(x: (startingPoint?.x)! + platformWidth + CGFloat(Utilities.sharedInstance.randomNumber(inRange: -dificulty...dificulty)), y: (startingPoint?.y)! + platformHeight + CGFloat(Utilities.sharedInstance.randomNumber(inRange: -dificulty...dificulty)))
             let platform : Platform = Platform.init(startingPoint: startingPoint!, width: platformWidth, height: platformHeight)
             let block = platform.getPlatform(p1: lastStartingPoint!, p2: startingPoint!, size: CGSize(width: (lastStartingPoint?.distance(point: startingPoint!))!, height: platformHeight))
+            block.physicsBody?.collisionBitMask = 1
+            block.physicsBody?.categoryBitMask = 1
             newPlatforms.append(block)
         }
         platforms.append(contentsOf: newPlatforms)
