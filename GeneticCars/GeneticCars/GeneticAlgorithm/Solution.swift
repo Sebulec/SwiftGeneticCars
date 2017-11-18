@@ -6,8 +6,11 @@
 //  Copyright © 2017 Sebastian Kotarski. All rights reserved.
 //
 
-import Foundation
+import CoreGraphics
 
 struct Solution {
     // todo
+    var genes: [CGFloat] = []
+    
+    
 }

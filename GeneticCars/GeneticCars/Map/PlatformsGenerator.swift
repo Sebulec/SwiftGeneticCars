@@ -48,4 +48,8 @@ class PlatformsGenerator {
         return platforms.last
     }
     
+    func getPositionOfLowestPlatform() -> CGPoint {
+        return (platforms.max(by: {$0.position.y > $1.position.y})?.position)!
+    }
+    
 }

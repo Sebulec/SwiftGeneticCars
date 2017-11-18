@@ -24,11 +24,13 @@ class Vehicle: SKShapeNode {
         self.init(path: path)
         let randomColor = Utilities.sharedInstance.getRandomColor()
         self.physicsBody = SKPhysicsBody(polygonFrom: self.path!)
-        self.position = CGPoint(x: 100, y: 100)
+        self.position = CGPoint(x: 100, y: 0)
         self.fillColor = randomColor
         self.lineWidth = 1.5
         self.strokeColor = randomColor
-        self.physicsBody?.mass = 2
+        self.physicsBody?.mass = 10
+        self.physicsBody?.linearDamping = 0
+        self.physicsBody?.linearDamping = 0
         let wheel = wheels.first
         wheel?.position = points[2]
         wheel?.physicsBody?.pinned = true
@@ -53,9 +55,16 @@ class Vehicle: SKShapeNode {
         
     }
     
+    func applyDxForce(_ force: CGFloat) {
+        firstWheel?.physicsBody?.velocity.dx = force
+        secondWheel?.physicsBody?.velocity.dx = force
+    }
+    
     func applyForce(_ force: CGFloat) {
-        firstWheel?.physicsBody?.angularVelocity = -force
-        secondWheel?.physicsBody?.angularVelocity = -force
+        firstWheel?.physicsBody?.applyTorque(CGFloat(force))
+        secondWheel?.physicsBody?.applyTorque(CGFloat(force))
+//        firstWheel?.physicsBody?.angularVelocity = -force / CGFloat(60)
+//        secondWheel?.physicsBody?.angularVelocity = -force / CGFloat(60)
     }
     
 }

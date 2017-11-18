@@ -20,7 +20,9 @@ class Platform: SKShapeNode {
         self.lineCap = CGLineCap(rawValue: 1)!
         self.physicsBody = SKPhysicsBody(circleOfRadius: 2)
         self.physicsBody?.isDynamic = true
-        self.physicsBody?.restitution = 0.7
+        self.physicsBody?.restitution = 1
+        self.physicsBody?.mass = 1000
+        self.physicsBody?.density = 1
         self.physicsBody?.friction = 0.5
         self.physicsBody?.usesPreciseCollisionDetection = true
         self.physicsBody?.allowsRotation = true

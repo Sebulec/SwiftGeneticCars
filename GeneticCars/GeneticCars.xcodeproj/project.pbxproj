@@ -17,12 +17,21 @@
 		9008233B1FA133EC00F116B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 900823391FA133EC00F116B8 /* LaunchScreen.storyboard */; };
 		902F13DC1FB781390058E432 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F13DB1FB781390058E432 /* GameStats.swift */; };
 		902F13E11FB786E10058E432 /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F13E01FB786E10058E432 /* Solution.swift */; };
+		9057BDBC1FC0B1B9008384C1 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDBB1FC0B1B9008384C1 /* GeneticAlgorithm.swift */; };
+		9057BDBE1FC0B1E6008384C1 /* Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDBD1FC0B1E6008384C1 /* Mutation.swift */; };
+		9057BDC01FC0B1FE008384C1 /* Crossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDBF1FC0B1FE008384C1 /* Crossover.swift */; };
+		9057BDC21FC0B349008384C1 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC11FC0B349008384C1 /* Selection.swift */; };
+		9057BDC41FC0B365008384C1 /* SelectionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC31FC0B365008384C1 /* SelectionTypes.swift */; };
+		9057BDC61FC0B3E0008384C1 /* QualityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC51FC0B3E0008384C1 /* QualityFunction.swift */; };
+		9057BDC81FC0B563008384C1 /* GameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC71FC0B563008384C1 /* GameRules.swift */; };
+		9057BDCA1FC0B82F008384C1 /* VehicleFenotype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC91FC0B82F008384C1 /* VehicleFenotype.swift */; };
 		9084AA131FB76064004AA9F3 /* Wheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9084AA121FB76064004AA9F3 /* Wheel.swift */; };
 		9098AE3F1FB37F8C00DAB1FF /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE3E1FB37F8C00DAB1FF /* Vehicle.swift */; };
 		9098AE411FB3801300DAB1FF /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE401FB3801300DAB1FF /* Platform.swift */; };
 		9098AE431FB3819C00DAB1FF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE421FB3819C00DAB1FF /* Utilities.swift */; };
 		9098AE451FB38B3200DAB1FF /* PlatformsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE441FB38B3200DAB1FF /* PlatformsGenerator.swift */; };
 		9098AE471FB3C5FF00DAB1FF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE461FB3C5FF00DAB1FF /* Extensions.swift */; };
+		90E61F891FB99DD700602AFD /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E61F881FB99DD700602AFD /* GameDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,13 +47,21 @@
 		9008233C1FA133EC00F116B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902F13DB1FB781390058E432 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
 		902F13E01FB786E10058E432 /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
-		902F6F861FADE4D0001FC637 /* grass.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass.jpg; sourceTree = "<group>"; };
+		9057BDBB1FC0B1B9008384C1 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
+		9057BDBD1FC0B1E6008384C1 /* Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mutation.swift; sourceTree = "<group>"; };
+		9057BDBF1FC0B1FE008384C1 /* Crossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crossover.swift; sourceTree = "<group>"; };
+		9057BDC11FC0B349008384C1 /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
+		9057BDC31FC0B365008384C1 /* SelectionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTypes.swift; sourceTree = "<group>"; };
+		9057BDC51FC0B3E0008384C1 /* QualityFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualityFunction.swift; sourceTree = "<group>"; };
+		9057BDC71FC0B563008384C1 /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
+		9057BDC91FC0B82F008384C1 /* VehicleFenotype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleFenotype.swift; sourceTree = "<group>"; };
 		9084AA121FB76064004AA9F3 /* Wheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheel.swift; sourceTree = "<group>"; };
 		9098AE3E1FB37F8C00DAB1FF /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		9098AE401FB3801300DAB1FF /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		9098AE421FB3819C00DAB1FF /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		9098AE441FB38B3200DAB1FF /* PlatformsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformsGenerator.swift; sourceTree = "<group>"; };
 		9098AE461FB3C5FF00DAB1FF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		90E61F881FB99DD700602AFD /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +107,9 @@
 				900823371FA133EC00F116B8 /* Assets.xcassets */,
 				900823391FA133EC00F116B8 /* LaunchScreen.storyboard */,
 				9008233C1FA133EC00F116B8 /* Info.plist */,
-				902F6F861FADE4D0001FC637 /* grass.jpg */,
 				9098AE421FB3819C00DAB1FF /* Utilities.swift */,
 				9098AE461FB3C5FF00DAB1FF /* Extensions.swift */,
+				90E61F881FB99DD700602AFD /* GameDelegate.swift */,
 			);
 			path = GeneticCars;
 			sourceTree = "<group>";
@@ -101,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				902F13DB1FB781390058E432 /* GameStats.swift */,
+				9057BDC71FC0B563008384C1 /* GameRules.swift */,
+				9057BDC91FC0B82F008384C1 /* VehicleFenotype.swift */,
 			);
 			path = GameLogic;
 			sourceTree = "<group>";
@@ -118,6 +137,12 @@
 			isa = PBXGroup;
 			children = (
 				902F13E01FB786E10058E432 /* Solution.swift */,
+				9057BDBB1FC0B1B9008384C1 /* GeneticAlgorithm.swift */,
+				9057BDBD1FC0B1E6008384C1 /* Mutation.swift */,
+				9057BDBF1FC0B1FE008384C1 /* Crossover.swift */,
+				9057BDC11FC0B349008384C1 /* Selection.swift */,
+				9057BDC31FC0B365008384C1 /* SelectionTypes.swift */,
+				9057BDC51FC0B3E0008384C1 /* QualityFunction.swift */,
 			);
 			path = GeneticAlgorithm;
 			sourceTree = "<group>";
@@ -205,14 +230,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9057BDC21FC0B349008384C1 /* Selection.swift in Sources */,
 				9084AA131FB76064004AA9F3 /* Wheel.swift in Sources */,
 				9098AE431FB3819C00DAB1FF /* Utilities.swift in Sources */,
+				9057BDC01FC0B1FE008384C1 /* Crossover.swift in Sources */,
 				9098AE411FB3801300DAB1FF /* Platform.swift in Sources */,
+				9057BDC61FC0B3E0008384C1 /* QualityFunction.swift in Sources */,
 				9098AE3F1FB37F8C00DAB1FF /* Vehicle.swift in Sources */,
 				902F13E11FB786E10058E432 /* Solution.swift in Sources */,
 				9098AE471FB3C5FF00DAB1FF /* Extensions.swift in Sources */,
+				90E61F891FB99DD700602AFD /* GameDelegate.swift in Sources */,
+				9057BDCA1FC0B82F008384C1 /* VehicleFenotype.swift in Sources */,
+				9057BDBC1FC0B1B9008384C1 /* GeneticAlgorithm.swift in Sources */,
+				9057BDC81FC0B563008384C1 /* GameRules.swift in Sources */,
 				900823311FA133EC00F116B8 /* GameScene.swift in Sources */,
+				9057BDC41FC0B365008384C1 /* SelectionTypes.swift in Sources */,
 				900823331FA133EC00F116B8 /* GameViewController.swift in Sources */,
+				9057BDBE1FC0B1E6008384C1 /* Mutation.swift in Sources */,
 				9098AE451FB38B3200DAB1FF /* PlatformsGenerator.swift in Sources */,
 				9008232B1FA133EC00F116B8 /* AppDelegate.swift in Sources */,
 				902F13DC1FB781390058E432 /* GameStats.swift in Sources */,
