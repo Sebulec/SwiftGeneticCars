@@ -27,22 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         configureViews()
         configurePlatforms()
-        addVehicles()
         scheduledTimerWithTimeInterval()
-    }
-    
-    func addVehicles() {
-        for i in 1...10 {
-            var points: [CGPoint] = []
-            for _ in 1...6 {
-                points.append(CGPoint(x: Utilities.sharedInstance.randomNumber(inRange: -50...50), y: Utilities.sharedInstance.randomNumber(inRange: -50...50)))
-            }
-            let wheel = Wheel(positionInVehicle: CGPoint(x: 10, y: 10),radius: CGFloat(i))
-            let wheel2 = Wheel(positionInVehicle: CGPoint(x: 20, y: 20),radius: CGFloat(i + 5))
-            let vehicle = Vehicle(points: points, [wheel, wheel2])
-            self.addChild(vehicle)
-            self.vehicles.append(vehicle)
-        }
     }
     
     func cleanData() {
@@ -144,7 +129,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         configureViews()
         configurePlatforms()
         cleanData()
-        addVehicles()
         scheduledTimerWithTimeInterval()
     }
     

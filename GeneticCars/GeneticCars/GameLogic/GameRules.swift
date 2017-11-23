@@ -9,8 +9,9 @@
 import Foundation
 
 struct GameRules {
-    // todo fill correctly
-    static let coordinatesRangeForHorizontal = Range(1...20)
-    static let coordinatesRangeForVertical = Range(1...20)
+    static let coordinatesRangeForHorizontal = Range(-50...50)
+    static let coordinatesRangeForVertical = Range(-50...50)
     static let wheelSizeRange = Range(1...20)
+    static let numberOfPointsInSolution = 6
+    static let numberOfWheelsInSolution = 2
 }

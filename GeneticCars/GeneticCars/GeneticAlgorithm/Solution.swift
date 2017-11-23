@@ -9,8 +9,19 @@
 import CoreGraphics
 
 struct Solution {
-    // todo
-    var genes: [CGFloat] = []
+    var positionCoordinatesGenes: [CGFloat] = []
+    var wheelIndexesGenes: [Int] = []
+    var wheelRadiusGenes: [CGFloat] = []
     
-    
+    init() {
+        for _ in 0...GameRules.numberOfPointsInSolution*2 - 1 {
+            positionCoordinatesGenes.append(CGFloat(0))
+        }
+        for _ in 0...GameRules.numberOfWheelsInSolution - 1 {
+            wheelIndexesGenes.append(0)
+        }
+        for _ in 0...GameRules.numberOfWheelsInSolution - 1 {
+            wheelRadiusGenes.append(CGFloat(0))
+        }
+    }
 }

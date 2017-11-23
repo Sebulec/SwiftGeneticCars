@@ -14,6 +14,8 @@ class Vehicle: SKShapeNode {
     static let numberOfPoints = 5
     var firstWheel: Wheel?
     var secondWheel: Wheel?
+    var solution: Solution?
+    
     convenience init(points: [CGPoint], _ wheels: [Wheel]) {
         let path = CGMutablePath()
         path.move(to: points.first!)
@@ -32,13 +34,13 @@ class Vehicle: SKShapeNode {
         self.physicsBody?.linearDamping = 0
         self.physicsBody?.linearDamping = 0
         let wheel = wheels.first
-        wheel?.position = points[2]
+        wheel?.position = points[(wheel?.pinnedIndexPoint)!]
         wheel?.physicsBody?.pinned = true
         self.firstWheel = wheel
         
         
         let wheel2 = wheels.last
-        wheel2?.position = points[3]
+        wheel2?.position = points[(wheel2?.pinnedIndexPoint)!]
         wheel2?.physicsBody?.pinned = true
         self.secondWheel = wheel2
         
