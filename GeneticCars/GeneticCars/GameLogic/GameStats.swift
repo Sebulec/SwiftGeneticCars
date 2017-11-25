@@ -19,7 +19,7 @@ struct GameStats {
         set {
             _vehiclesWithScores = newValue
             bestScore = self.vehiclesWithScores.values.max() ?? 0
-            bestScoreOfAllTime = self.geneticAlgorithm?.bestSolutionOfAllTime?.score?.distance ?? 0
+            bestScoreOfAllTime = self.geneticAlgorithm?.bestSolutionOfAllTime?.score?.distance ?? 0.0
         }
     }
     private var bestScore: CGFloat = CGFloat(0)

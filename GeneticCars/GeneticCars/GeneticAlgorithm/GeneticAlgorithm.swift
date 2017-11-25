@@ -27,11 +27,13 @@ class GeneticAlgorithm {
         // crossover
         // todo
         
-        let bestSolutionForPopulation = previous.filter({$0.score! > bestSolutionOfAllTime?.score ?? SolutionScore()}).max(by: {$0.score! > $1.score!})
+        let s = previous.filter({$0.score! > (bestSolutionOfAllTime?.score ?? SolutionScore())}).sorted(by: {$0.score! > $1.score!})
+        
+        let bestSolutionForPopulation = previous.filter({$0.score! > (bestSolutionOfAllTime?.score ?? SolutionScore())}).sorted(by: {$0.score! > $1.score!}).first
         if bestSolutionForPopulation != nil {
             bestSolutionOfAllTime = bestSolutionForPopulation
         }
-        
+        print("Best distance \(bestSolutionForPopulation?.score?.distance)")
         return initializePopulation()
     }
     

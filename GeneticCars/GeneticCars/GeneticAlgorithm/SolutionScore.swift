@@ -15,7 +15,7 @@ struct SolutionScore {
     
     func getCombinatedScore() -> CGFloat {
         // todo sth more intelligent
-        return CGFloat(time) * distance
+        return distance
     }
     
     static func >(left: SolutionScore, right: SolutionScore) -> Bool {
