@@ -10,7 +10,10 @@ import Foundation
 import CoreGraphics
 // two-way data converter from chromosome to fenotype and contrariwise
 struct VehicleFenotype {
-    static func getChromoseFromFenotype(vehicle: Vehicle) -> Solution {
+    static func getChromoseFromFenotype(vehicle: Vehicle, vehiclesWithScores: [Vehicle : CGFloat], vehiclesWithTime: [Vehicle : Int]) -> Solution {
+        var solution = vehicle.solution!
+        solution.score = SolutionScore(time: vehiclesWithTime[vehicle]!, distance: vehiclesWithScores[vehicle]!)
+        print(solution.score)
         return vehicle.solution!
     }
     static func getFenotypeFromChromosome(solution: Solution) -> Vehicle {

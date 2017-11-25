@@ -11,7 +11,8 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController, GameDelegate {
-    var gameStats = GameStats()
+    let geneticAlgorithm = GeneticAlgorithm()
+    var gameStats : GameStats?
     
     @IBOutlet weak var gameStatsLabel: UILabel!
     override func viewDidLoad() {
@@ -22,6 +23,8 @@ class GameViewController: UIViewController, GameDelegate {
             if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
+                scene.geneticAlgorithm = geneticAlgorithm
+                gameStats = GameStats(geneticAlgorithm: geneticAlgorithm)
                 
                 // Present the scene
                 view.presentScene(scene)
@@ -64,7 +67,7 @@ class GameViewController: UIViewController, GameDelegate {
     }
     
     func updateGame(with vehicles: [Vehicle : CGFloat]) {
-        gameStats.vehiclesWithScores = vehicles
-        self.gameStatsLabel.text = gameStats.getLabelInfo()
+        gameStats?.vehiclesWithScores = vehicles
+        self.gameStatsLabel.text = gameStats?.getLabelInfo()
     }
 }

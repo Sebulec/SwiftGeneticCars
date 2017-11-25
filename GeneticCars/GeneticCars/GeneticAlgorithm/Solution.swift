@@ -8,10 +8,12 @@
 
 import CoreGraphics
 
-struct Solution {
+class Solution {
     var positionCoordinatesGenes: [CGFloat] = []
     var wheelIndexesGenes: [Int] = []
     var wheelRadiusGenes: [CGFloat] = []
+    
+    var score: SolutionScore?
     
     init() {
         for _ in 0...GameRules.numberOfPointsInSolution*2 - 1 {
@@ -23,5 +25,11 @@ struct Solution {
         for _ in 0...GameRules.numberOfWheelsInSolution - 1 {
             wheelRadiusGenes.append(CGFloat(0))
         }
+    }
+    
+    init(positionCoordinatesGenes: [CGFloat], wheelIndexesGenes: [Int], wheelRadiusGenes: [CGFloat]) {
+        self.positionCoordinatesGenes = positionCoordinatesGenes
+        self.wheelIndexesGenes = wheelIndexesGenes
+        self.wheelRadiusGenes = wheelRadiusGenes
     }
 }

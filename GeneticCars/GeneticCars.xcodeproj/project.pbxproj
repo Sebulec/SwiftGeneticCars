@@ -17,12 +17,12 @@
 		9008233B1FA133EC00F116B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 900823391FA133EC00F116B8 /* LaunchScreen.storyboard */; };
 		902F13DC1FB781390058E432 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F13DB1FB781390058E432 /* GameStats.swift */; };
 		902F13E11FB786E10058E432 /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F13E01FB786E10058E432 /* Solution.swift */; };
+		9049B9F91FC98C1100D302CD /* SolutionScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9049B9F81FC98C1100D302CD /* SolutionScore.swift */; };
 		9057BDBC1FC0B1B9008384C1 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDBB1FC0B1B9008384C1 /* GeneticAlgorithm.swift */; };
 		9057BDBE1FC0B1E6008384C1 /* Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDBD1FC0B1E6008384C1 /* Mutation.swift */; };
 		9057BDC01FC0B1FE008384C1 /* Crossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDBF1FC0B1FE008384C1 /* Crossover.swift */; };
 		9057BDC21FC0B349008384C1 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC11FC0B349008384C1 /* Selection.swift */; };
 		9057BDC41FC0B365008384C1 /* SelectionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC31FC0B365008384C1 /* SelectionTypes.swift */; };
-		9057BDC61FC0B3E0008384C1 /* QualityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC51FC0B3E0008384C1 /* QualityFunction.swift */; };
 		9057BDC81FC0B563008384C1 /* GameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC71FC0B563008384C1 /* GameRules.swift */; };
 		9057BDCA1FC0B82F008384C1 /* VehicleFenotype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC91FC0B82F008384C1 /* VehicleFenotype.swift */; };
 		9084AA131FB76064004AA9F3 /* Wheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9084AA121FB76064004AA9F3 /* Wheel.swift */; };
@@ -47,12 +47,12 @@
 		9008233C1FA133EC00F116B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		902F13DB1FB781390058E432 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
 		902F13E01FB786E10058E432 /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
+		9049B9F81FC98C1100D302CD /* SolutionScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionScore.swift; sourceTree = "<group>"; };
 		9057BDBB1FC0B1B9008384C1 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
 		9057BDBD1FC0B1E6008384C1 /* Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mutation.swift; sourceTree = "<group>"; };
 		9057BDBF1FC0B1FE008384C1 /* Crossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crossover.swift; sourceTree = "<group>"; };
 		9057BDC11FC0B349008384C1 /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		9057BDC31FC0B365008384C1 /* SelectionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTypes.swift; sourceTree = "<group>"; };
-		9057BDC51FC0B3E0008384C1 /* QualityFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualityFunction.swift; sourceTree = "<group>"; };
 		9057BDC71FC0B563008384C1 /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
 		9057BDC91FC0B82F008384C1 /* VehicleFenotype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleFenotype.swift; sourceTree = "<group>"; };
 		9084AA121FB76064004AA9F3 /* Wheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheel.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 				9057BDBF1FC0B1FE008384C1 /* Crossover.swift */,
 				9057BDC11FC0B349008384C1 /* Selection.swift */,
 				9057BDC31FC0B365008384C1 /* SelectionTypes.swift */,
-				9057BDC51FC0B3E0008384C1 /* QualityFunction.swift */,
+				9049B9F81FC98C1100D302CD /* SolutionScore.swift */,
 			);
 			path = GeneticAlgorithm;
 			sourceTree = "<group>";
@@ -232,10 +232,10 @@
 			files = (
 				9057BDC21FC0B349008384C1 /* Selection.swift in Sources */,
 				9084AA131FB76064004AA9F3 /* Wheel.swift in Sources */,
+				9049B9F91FC98C1100D302CD /* SolutionScore.swift in Sources */,
 				9098AE431FB3819C00DAB1FF /* Utilities.swift in Sources */,
 				9057BDC01FC0B1FE008384C1 /* Crossover.swift in Sources */,
 				9098AE411FB3801300DAB1FF /* Platform.swift in Sources */,
-				9057BDC61FC0B3E0008384C1 /* QualityFunction.swift in Sources */,
 				9098AE3F1FB37F8C00DAB1FF /* Vehicle.swift in Sources */,
 				902F13E11FB786E10058E432 /* Solution.swift in Sources */,
 				9098AE471FB3C5FF00DAB1FF /* Extensions.swift in Sources */,

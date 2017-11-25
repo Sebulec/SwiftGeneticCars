@@ -11,6 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var geneticAlgorithm : GeneticAlgorithm?
     weak var gameDelegate: GameDelegate?
     
     private let cam = SKCameraNode()
@@ -18,24 +19,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var movementTolerance = CGFloat(10)
     private var vehiclesWithScores: [Vehicle : CGFloat] = [:]
     private var vehiclesWithPreviousScores: [Vehicle : CGFloat] = [:]
-    private var vehiclesWithTime: [Vehicle : CGFloat] = [:]
-    private var vehiclesWithPreviousTime: [Vehicle : CGFloat] = [:]
+    private var vehiclesWithTime: [Vehicle : Int] = [:]
+    private var vehiclesWithPreviousTime: [Vehicle : Int] = [:]
     private var vehicles: [Vehicle] = []
     private var platformsGenerator: PlatformsGenerator?
     private var timer = Timer()
+    private var maxDistance = CGFloat(20)
+    private let distanceStep = CGFloat(20)
     
     override func didMove(to view: SKView) {
         configureViews()
         configurePlatforms()
         scheduledTimerWithTimeInterval()
-    }
-    
-    func cleanData() {
-        self.vehicles.removeAll()
-        self.vehiclesWithPreviousTime.removeAll()
-        self.vehiclesWithTime.removeAll()
-        self.vehiclesWithPreviousScores.removeAll()
-        self.vehiclesWithScores.removeAll()
+        addVehiclesToScene(solutions: (geneticAlgorithm?.initializePopulation())!)
     }
     
     private func configureViews() {
@@ -45,7 +41,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
         self.physicsWorld.contactDelegate = self
         self.scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        self.view?.showsPhysics = true
         self.camera = cam
     }
     
@@ -55,6 +50,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         platformsGenerator?.numberOfPlatforms = 200
         let platforms = platformsGenerator?.generatePlatformsFrom()
         platforms?.forEach({self.addChild($0)})
+    }
+    
+    func scheduledTimerWithTimeInterval(){
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCounting), userInfo: nil, repeats: true)
+    }
+    
+    func addVehiclesToScene(solutions: [Solution]) {
+        vehicles = solutions.map({VehicleFenotype.getFenotypeFromChromosome(solution: $0)})
+        vehicles.forEach({self.addChild($0)})
+    }
+    
+    func cleanData() {
+        self.vehicles.removeAll()
+        self.vehiclesWithPreviousTime.removeAll()
+        self.vehiclesWithTime.removeAll()
+        self.vehiclesWithPreviousScores.removeAll()
+        self.vehiclesWithScores.removeAll()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -106,9 +118,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return false
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        nextPopulation()
-        self.camera?.position = (self.getLeader()?.position)!
+    private func shouldGetNextPopulation() {
+        if !vehiclesWithScores.values.filter({$0 / 100.0 > maxDistance}).isEmpty {
+            nextPopulation()
+            makeBiggerDistance()
+        }
     }
     
     private func nextPopulation() {
@@ -126,14 +140,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private func reloadScene() {
         self.timer.invalidate()
         self.removeAllChildren()
+        let vehiclesWithScores = self.vehiclesWithScores
+        let vehicleWithTime = self.vehiclesWithTime
+        let solutions = (geneticAlgorithm?.getNextPopulation(previous: getSolutionsFromVehicles(vehiclesWithScores, vehicleWithTime)))!
+        cleanData()
         configureViews()
         configurePlatforms()
-        cleanData()
         scheduledTimerWithTimeInterval()
+        addVehiclesToScene(solutions: solutions)
     }
     
-    func scheduledTimerWithTimeInterval(){
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCounting), userInfo: nil, repeats: true)
+    private func makeBiggerDistance() {
+        maxDistance += distanceStep
+    }
+    
+    private func getSolutionsFromVehicles(_ vehiclesWithScores: [Vehicle : CGFloat], _ vehiclesWithTime: [Vehicle : Int]) -> [Solution] {
+        return vehicles.map({VehicleFenotype.getChromoseFromFenotype(vehicle: $0, vehiclesWithScores: vehiclesWithScores, vehiclesWithTime: vehiclesWithTime)})
     }
     
     @objc private func updateCounting(){
@@ -145,18 +167,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private func updateVehiclesTimes() {
         if !vehiclesWithPreviousTime.isEmpty {
-            self.vehiclesWithTime = vehicles.reduce([:]) { (acc, vehicle) -> [Vehicle : CGFloat] in
+            self.vehiclesWithTime = vehicles.reduce([:]) { (acc, vehicle) -> [Vehicle : Int] in
                 let previousScore = vehiclesWithPreviousScores[vehicle] ?? 0
                 let lastScore = vehiclesWithScores[vehicle]!
                 var dict = acc
                 dict[vehicle] = lastScore - previousScore > movementTolerance ? (vehiclesWithPreviousTime[vehicle]! + 1) : vehiclesWithPreviousTime[vehicle]!
-                //                print("vehicle: \(vehicles.index(of: vehicle)!) has time: \(dict[vehicle]!)")
                 return dict
             }
         } else {
-            vehiclesWithTime = vehicles.reduce([:]) { (acc, vehicle) -> [Vehicle : CGFloat] in
+            vehiclesWithTime = vehicles.reduce([:]) { (acc, vehicle) -> [Vehicle : Int] in
                 var dict = acc
-                dict[vehicle] = CGFloat(0)
+                dict[vehicle] = 0
                 return dict
             }
         }
@@ -165,6 +186,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private func startNextPopulationIfVehiclesStopped() {
         if vehicles.filter({vehiclesWithTime[$0] != vehiclesWithPreviousTime[$0]}).isEmpty {
             nextPopulation()
+        } else {
+            shouldGetNextPopulation()
         }
     }
 }

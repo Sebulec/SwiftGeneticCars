@@ -10,7 +10,7 @@ import SpriteKit
 import GameKit
 
 struct GameStats {
-    private var numberOfPopulation = 0
+    private var geneticAlgorithm: GeneticAlgorithm?
     private var _vehiclesWithScores: [Vehicle : CGFloat] = [:]
     var vehiclesWithScores: [Vehicle : CGFloat] {
         get {
@@ -18,16 +18,21 @@ struct GameStats {
         }
         set {
             _vehiclesWithScores = newValue
-            bestScore = self.vehiclesWithScores.values.max()!
+            bestScore = self.vehiclesWithScores.values.max() ?? 0
+            bestScoreOfAllTime = self.geneticAlgorithm?.bestSolutionOfAllTime?.score?.distance ?? 0
         }
     }
     private var bestScore: CGFloat = CGFloat(0)
     private var bestScoreOfAllTime: CGFloat = CGFloat(0)
     
     func getLabelInfo() -> String {
-        return "Population: " + numberOfPopulation.description + "\n"
+        let populationSize = "Population: " + (geneticAlgorithm?.numberOfIteration.description)!
+        return populationSize + "\n"
             + "Best score: " + String(format: "%.2f", bestScore / 100.0) + "\n"
             + "Best score of all: " +  String(format: "%.2f", bestScoreOfAllTime / 100.0)
     }
     
+    init(geneticAlgorithm: GeneticAlgorithm) {
+        self.geneticAlgorithm = geneticAlgorithm
+    }
 }
