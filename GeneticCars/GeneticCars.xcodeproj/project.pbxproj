@@ -18,6 +18,7 @@
 		902F13DC1FB781390058E432 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F13DB1FB781390058E432 /* GameStats.swift */; };
 		902F13E11FB786E10058E432 /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902F13E01FB786E10058E432 /* Solution.swift */; };
 		9049B9F91FC98C1100D302CD /* SolutionScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9049B9F81FC98C1100D302CD /* SolutionScore.swift */; };
+		9052FB2F1FCC3329007E74FE /* GeneticCarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9052FB2E1FCC3329007E74FE /* GeneticCarsTests.swift */; };
 		9057BDBC1FC0B1B9008384C1 /* GeneticAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDBB1FC0B1B9008384C1 /* GeneticAlgorithm.swift */; };
 		9057BDBE1FC0B1E6008384C1 /* Mutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDBD1FC0B1E6008384C1 /* Mutation.swift */; };
 		9057BDC01FC0B1FE008384C1 /* Crossover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDBF1FC0B1FE008384C1 /* Crossover.swift */; };
@@ -34,6 +35,16 @@
 		90E61F891FB99DD700602AFD /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E61F881FB99DD700602AFD /* GameDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9052FB311FCC3329007E74FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9008231F1FA133EC00F116B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 900823261FA133EC00F116B8;
+			remoteInfo = GeneticCars;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		900823271FA133EC00F116B8 /* GeneticCars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeneticCars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9008232A1FA133EC00F116B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +59,9 @@
 		902F13DB1FB781390058E432 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
 		902F13E01FB786E10058E432 /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
 		9049B9F81FC98C1100D302CD /* SolutionScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionScore.swift; sourceTree = "<group>"; };
+		9052FB2C1FCC3329007E74FE /* GeneticCarsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeneticCarsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9052FB2E1FCC3329007E74FE /* GeneticCarsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticCarsTests.swift; sourceTree = "<group>"; };
+		9052FB301FCC3329007E74FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9057BDBB1FC0B1B9008384C1 /* GeneticAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticAlgorithm.swift; sourceTree = "<group>"; };
 		9057BDBD1FC0B1E6008384C1 /* Mutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mutation.swift; sourceTree = "<group>"; };
 		9057BDBF1FC0B1FE008384C1 /* Crossover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crossover.swift; sourceTree = "<group>"; };
@@ -72,6 +86,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9052FB291FCC3329007E74FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				900823291FA133EC00F116B8 /* GeneticCars */,
+				9052FB2D1FCC3329007E74FE /* GeneticCarsTests */,
 				900823281FA133EC00F116B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				900823271FA133EC00F116B8 /* GeneticCars.app */,
+				9052FB2C1FCC3329007E74FE /* GeneticCarsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,6 +170,15 @@
 			path = GeneticAlgorithm;
 			sourceTree = "<group>";
 		};
+		9052FB2D1FCC3329007E74FE /* GeneticCarsTests */ = {
+			isa = PBXGroup;
+			children = (
+				9052FB2E1FCC3329007E74FE /* GeneticCarsTests.swift */,
+				9052FB301FCC3329007E74FE /* Info.plist */,
+			);
+			path = GeneticCarsTests;
+			sourceTree = "<group>";
+		};
 		9084AA141FB76480004AA9F3 /* Car */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,19 +208,42 @@
 			productReference = 900823271FA133EC00F116B8 /* GeneticCars.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9052FB2B1FCC3329007E74FE /* GeneticCarsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9052FB351FCC3329007E74FE /* Build configuration list for PBXNativeTarget "GeneticCarsTests" */;
+			buildPhases = (
+				9052FB281FCC3329007E74FE /* Sources */,
+				9052FB291FCC3329007E74FE /* Frameworks */,
+				9052FB2A1FCC3329007E74FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9052FB321FCC3329007E74FE /* PBXTargetDependency */,
+			);
+			name = GeneticCarsTests;
+			productName = GeneticCarsTests;
+			productReference = 9052FB2C1FCC3329007E74FE /* GeneticCarsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		9008231F1FA133EC00F116B8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 0910;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Sebastian Kotarski";
 				TargetAttributes = {
 					900823261FA133EC00F116B8 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+					};
+					9052FB2B1FCC3329007E74FE = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 900823261FA133EC00F116B8;
 					};
 				};
 			};
@@ -206,6 +261,7 @@
 			projectRoot = "";
 			targets = (
 				900823261FA133EC00F116B8 /* GeneticCars */,
+				9052FB2B1FCC3329007E74FE /* GeneticCarsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -220,6 +276,13 @@
 				900823381FA133EC00F116B8 /* Assets.xcassets in Resources */,
 				9008233B1FA133EC00F116B8 /* LaunchScreen.storyboard in Resources */,
 				9008232F1FA133EC00F116B8 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9052FB2A1FCC3329007E74FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +316,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9052FB281FCC3329007E74FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9052FB2F1FCC3329007E74FE /* GeneticCarsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9052FB321FCC3329007E74FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 900823261FA133EC00F116B8 /* GeneticCars */;
+			targetProxy = 9052FB311FCC3329007E74FE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		900823341FA133EC00F116B8 /* Main.storyboard */ = {
@@ -414,6 +493,40 @@
 			};
 			name = Release;
 		};
+		9052FB331FCC3329007E74FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KDCQ2PRYNK;
+				INFOPLIST_FILE = GeneticCarsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pwr.GeneticCarsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeneticCars.app/GeneticCars";
+			};
+			name = Debug;
+		};
+		9052FB341FCC3329007E74FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KDCQ2PRYNK;
+				INFOPLIST_FILE = GeneticCarsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pwr.GeneticCarsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeneticCars.app/GeneticCars";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -431,6 +544,15 @@
 			buildConfigurations = (
 				900823401FA133EC00F116B8 /* Debug */,
 				900823411FA133EC00F116B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9052FB351FCC3329007E74FE /* Build configuration list for PBXNativeTarget "GeneticCarsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9052FB331FCC3329007E74FE /* Debug */,
+				9052FB341FCC3329007E74FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

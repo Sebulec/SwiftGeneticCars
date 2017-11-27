@@ -13,7 +13,6 @@ struct VehicleFenotype {
     static func getChromoseFromFenotype(vehicle: Vehicle, vehiclesWithScores: [Vehicle : CGFloat], vehiclesWithTime: [Vehicle : Int]) -> Solution {
         let solution = vehicle.solution!
         solution.score = SolutionScore(time: vehiclesWithTime[vehicle]!, distance: vehiclesWithScores[vehicle]!)
-        print(vehiclesWithScores[vehicle])
         return vehicle.solution!
     }
     static func getFenotypeFromChromosome(solution: Solution) -> Vehicle {
