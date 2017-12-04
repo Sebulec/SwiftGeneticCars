@@ -58,7 +58,7 @@ class GeneticAlgorithm {
             wheelIndexesGenes.append(Utilities.sharedInstance.randomNumber(inRange: 0...GameRules.numberOfPointsInSolution - 1))
         }
         for _ in 0...GameRules.numberOfWheelsInSolution - 1 {
-            wheelRadiusGenes.append(CGFloat(Utilities.sharedInstance.randomNumber(inRange: 1...GameRules.wheelSizeRange)))
+            wheelRadiusGenes.append(CGFloat(Utilities.sharedInstance.randomNumber(inRange: 1...Int(GameRules.wheelSizeRange))))
         }
         let solution = Solution(positionCoordinatesGenes: positionCoordinatesGenes, wheelIndexesGenes: wheelIndexesGenes, wheelRadiusGenes: wheelRadiusGenes)
         return solution

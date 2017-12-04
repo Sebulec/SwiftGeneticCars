@@ -31,6 +31,9 @@ class GeneticCarsTests: XCTestCase {
         }
         for _ in 1...10 {
             let solution = Selection.selectSolutionsWithSelectionType(solutions: solutions, selectionType: .tournament, ["groupSize" : 5])
+            
+            let mutatedSolution = Mutation.getMutatedSolution(base: solution, solutions: solutions)
+            
             print("printed Solution: \(solution.positionCoordinatesGenes)")
             print("printed Solution quality: \(solution.score?.getCombinatedScore())")
         }

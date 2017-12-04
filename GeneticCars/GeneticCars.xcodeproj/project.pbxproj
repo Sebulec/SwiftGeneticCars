@@ -26,6 +26,7 @@
 		9057BDC41FC0B365008384C1 /* SelectionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC31FC0B365008384C1 /* SelectionTypes.swift */; };
 		9057BDC81FC0B563008384C1 /* GameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC71FC0B563008384C1 /* GameRules.swift */; };
 		9057BDCA1FC0B82F008384C1 /* VehicleFenotype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9057BDC91FC0B82F008384C1 /* VehicleFenotype.swift */; };
+		906C25B81FD4C17F00F84579 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906C25B71FD4C17F00F84579 /* AudioToolbox.framework */; };
 		9084AA131FB76064004AA9F3 /* Wheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9084AA121FB76064004AA9F3 /* Wheel.swift */; };
 		9098AE3F1FB37F8C00DAB1FF /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE3E1FB37F8C00DAB1FF /* Vehicle.swift */; };
 		9098AE411FB3801300DAB1FF /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9098AE401FB3801300DAB1FF /* Platform.swift */; };
@@ -69,6 +70,8 @@
 		9057BDC31FC0B365008384C1 /* SelectionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTypes.swift; sourceTree = "<group>"; };
 		9057BDC71FC0B563008384C1 /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
 		9057BDC91FC0B82F008384C1 /* VehicleFenotype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleFenotype.swift; sourceTree = "<group>"; };
+		906C25B71FD4C17F00F84579 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		906C25B91FD4C17F00F84579 /* GeneticCars.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GeneticCars.entitlements; sourceTree = "<group>"; };
 		9084AA121FB76064004AA9F3 /* Wheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheel.swift; sourceTree = "<group>"; };
 		9098AE3E1FB37F8C00DAB1FF /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		9098AE401FB3801300DAB1FF /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				906C25B81FD4C17F00F84579 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,7 @@
 				900823291FA133EC00F116B8 /* GeneticCars */,
 				9052FB2D1FCC3329007E74FE /* GeneticCarsTests */,
 				900823281FA133EC00F116B8 /* Products */,
+				906C25B61FD4C17F00F84579 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +122,7 @@
 		900823291FA133EC00F116B8 /* GeneticCars */ = {
 			isa = PBXGroup;
 			children = (
+				906C25B91FD4C17F00F84579 /* GeneticCars.entitlements */,
 				902F13DF1FB786D10058E432 /* GeneticAlgorithm */,
 				902F13DE1FB7864F0058E432 /* Map */,
 				902F13DD1FB786210058E432 /* GameLogic */,
@@ -179,6 +185,14 @@
 			path = GeneticCarsTests;
 			sourceTree = "<group>";
 		};
+		906C25B61FD4C17F00F84579 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				906C25B71FD4C17F00F84579 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9084AA141FB76480004AA9F3 /* Car */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +253,11 @@
 					900823261FA133EC00F116B8 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 					9052FB2B1FCC3329007E74FE = {
 						CreatedOnToolsVersion = 9.1;
@@ -465,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeneticCars/GeneticCars.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MZELR72T5W;
 				INFOPLIST_FILE = GeneticCars/Info.plist;
@@ -481,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeneticCars/GeneticCars.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MZELR72T5W;
 				INFOPLIST_FILE = GeneticCars/Info.plist;
@@ -498,7 +519,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KDCQ2PRYNK;
+				DEVELOPMENT_TEAM = MZELR72T5W;
 				INFOPLIST_FILE = GeneticCarsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -515,7 +536,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KDCQ2PRYNK;
+				DEVELOPMENT_TEAM = MZELR72T5W;
 				INFOPLIST_FILE = GeneticCarsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

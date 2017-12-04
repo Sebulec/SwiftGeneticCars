@@ -32,4 +32,44 @@ class Solution {
         self.wheelIndexesGenes = wheelIndexesGenes
         self.wheelRadiusGenes = wheelRadiusGenes
     }
+    
+    func fixGenesIfBroken() {
+        for index in 0...GameRules.numberOfPointsInSolution*2 - 1 {
+            var positionCoordinateGene = self.positionCoordinatesGenes[index]
+            if index % 2 == 0 {
+                // horizontal
+                if positionCoordinateGene > CGFloat(GameRules.coordinatesRangeForHorizontal) {
+                    positionCoordinateGene = CGFloat(GameRules.coordinatesRangeForHorizontal)
+                } else if positionCoordinateGene < CGFloat(-GameRules.coordinatesRangeForHorizontal) {
+                    positionCoordinateGene = CGFloat(-GameRules.coordinatesRangeForHorizontal)
+                }
+            } else {
+                // vertical
+                if positionCoordinateGene > CGFloat(GameRules.coordinatesRangeForVertical) {
+                    positionCoordinateGene = CGFloat(GameRules.coordinatesRangeForVertical)
+                } else if positionCoordinateGene < CGFloat(-GameRules.coordinatesRangeForVertical) {
+                    positionCoordinateGene = CGFloat(-GameRules.coordinatesRangeForVertical)
+                }
+            }
+            self.positionCoordinatesGenes[index] = positionCoordinateGene
+        }
+        for index in 0...GameRules.numberOfWheelsInSolution - 1 {
+            var wheelPosition = wheelIndexesGenes[index]
+            if wheelPosition > GameRules.numberOfPointsInSolution - 1 {
+                wheelPosition = GameRules.numberOfPointsInSolution - 1
+            } else if wheelPosition < 0 {
+                wheelPosition = 0
+            }
+            wheelIndexesGenes[index] = wheelPosition
+        }
+        for index in 0...GameRules.numberOfWheelsInSolution - 1 {
+            var wheelRadius = wheelRadiusGenes[index]
+            if wheelRadius > GameRules.wheelSizeRange {
+                wheelRadius = GameRules.wheelSizeRange
+            } else if wheelRadius < 1 {
+                wheelRadius = 1
+            }
+            wheelRadiusGenes[index] = wheelRadius
+        }
+    }
 }
