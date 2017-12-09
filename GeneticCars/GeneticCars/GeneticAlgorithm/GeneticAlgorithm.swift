@@ -14,27 +14,28 @@ class GeneticAlgorithm {
     var numberOfIteration = 0
     var bestSolutionOfAllTime : Solution?
     
+    let selectionType = SelectionType.rouletteWheel
+    
     func getNextPopulation(previous: [Solution]) -> [Solution] {
         numberOfIteration += 1
         //create population
-        let newPopulation : [Solution] = []
-        // selection
-        // todo
-        
-        // mutation
-        // todo
-        
-        // crossover
-        // todo
-        
-        let s = previous.filter({$0.score! > (bestSolutionOfAllTime?.score ?? SolutionScore())}).sorted(by: {$0.score! > $1.score!})
+        var newPopulation : [Solution] = []
+        for _ in 0...populationSize {
+            // selection
+            let selectedSolution = Selection.selectSolutionsWithSelectionType(solutions: previous, selectionType: selectionType, ["groupSize" : 10])
+            // mutation
+            let mutatedSolution = Mutation.getMutatedSolution(base: selectedSolution, solutions: previous)
+            // crossover
+            let crossOverSolution = Crossover.crossOver(firstSolution: selectedSolution, secondSolution: mutatedSolution)
+            newPopulation.append(crossOverSolution)
+        }
         
         let bestSolutionForPopulation = previous.filter({$0.score! > (bestSolutionOfAllTime?.score ?? SolutionScore())}).sorted(by: {$0.score! > $1.score!}).first
         if bestSolutionForPopulation != nil {
             bestSolutionOfAllTime = bestSolutionForPopulation
         }
-        print("Best distance \(bestSolutionForPopulation?.score?.distance)")
-        return initializePopulation()
+        print("Best distance \(String(describing: bestSolutionForPopulation?.score?.distance))")
+        return newPopulation
     }
     
     func initializePopulation() -> [Solution] {

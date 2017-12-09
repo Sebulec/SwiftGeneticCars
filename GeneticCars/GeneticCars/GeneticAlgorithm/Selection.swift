@@ -11,7 +11,7 @@ import CoreGraphics
 
 struct Selection {
     
-    static func selectSolutionsWithSelectionType(solutions: [Solution], selectionType: SelectionTypes, _ params: [String : Int]?) -> Solution {
+    static func selectSolutionsWithSelectionType(solutions: [Solution], selectionType: SelectionType, _ params: [String : Int]?) -> Solution {
         switch selectionType {
         case .rouletteWheel:
             let sumOfAllQualityFunctions : CGFloat = solutions.reduce(CGFloat(0), { (acc, solution) -> CGFloat in

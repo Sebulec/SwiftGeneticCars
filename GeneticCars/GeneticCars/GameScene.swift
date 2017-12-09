@@ -46,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private func configurePlatforms() {
         self.platformsGenerator = PlatformsGenerator(startingPoint: CGPoint(x: -((self.view?.bounds.width)!/2) , y: -(self.view?.bounds.height)!/2))
-        platformsGenerator?.dificulty = 75
+        platformsGenerator?.dificulty = 50
         platformsGenerator?.numberOfPlatforms = 200
         let platforms = platformsGenerator?.generatePlatformsFrom()
         platforms?.forEach({self.addChild($0)})
@@ -139,13 +139,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private func reloadScene() {
         self.timer.invalidate()
-        self.removeAllChildren()
+        self.removeChildren(in: self.vehicles)
         let vehiclesWithScores = self.vehiclesWithScores
         let vehicleWithTime = self.vehiclesWithTime
         let solutions = (geneticAlgorithm?.getNextPopulation(previous: getSolutionsFromVehicles(vehiclesWithScores, vehicleWithTime)))!
         cleanData()
         configureViews()
-        configurePlatforms()
         scheduledTimerWithTimeInterval()
         addVehiclesToScene(solutions: solutions)
     }

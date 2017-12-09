@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum SelectionTypes {
+enum SelectionType {
     case rouletteWheel, tournament
 }

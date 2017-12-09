@@ -38,7 +38,6 @@ class Vehicle: SKShapeNode {
         wheel?.physicsBody?.pinned = true
         self.firstWheel = wheel
         
-        
         let wheel2 = wheels.last
         wheel2?.position = points[(wheel2?.pinnedIndexPoint)!]
         wheel2?.physicsBody?.pinned = true
@@ -65,8 +64,8 @@ class Vehicle: SKShapeNode {
     func applyForce(_ force: CGFloat) {
         firstWheel?.physicsBody?.applyTorque(CGFloat(force))
         secondWheel?.physicsBody?.applyTorque(CGFloat(force))
-//        firstWheel?.physicsBody?.angularVelocity = -force / CGFloat(60)
-//        secondWheel?.physicsBody?.angularVelocity = -force / CGFloat(60)
+        firstWheel?.physicsBody?.angularVelocity = -force / CGFloat(60)
+        secondWheel?.physicsBody?.angularVelocity = -force / CGFloat(60)
     }
     
 }

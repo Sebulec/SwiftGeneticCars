@@ -11,10 +11,11 @@ import CoreGraphics
 
 struct Mutation {
     
-    static let mutationRate = 5
-    static let scaleFactor = 0.3
+    static let mutationRate = 20
+    static let scaleFactor = 1.0
     
     static func getMutatedSolution(base: Solution, solutions: [Solution]) -> Solution {
+        let mutatedSolution = Solution()
         var solutionsWithoutRepeates = solutions
         let firstRandomIndex = Utilities.sharedInstance.randomNumber(inRange: 0...solutionsWithoutRepeates.count - 1)
         let firstRandomSelectedSolution = solutionsWithoutRepeates[firstRandomIndex]
@@ -28,7 +29,11 @@ struct Mutation {
                 let secondPositionGene = secondRandomSelectedSolution.positionCoordinatesGenes[index]
                 let mutationValue = CGFloat((scaleFactor * (Double(firstPositionGene - secondPositionGene))))
                 basePositionGene = basePositionGene + mutationValue
-                base.positionCoordinatesGenes[index] = basePositionGene
+                mutatedSolution.positionCoordinatesGenes[index] = basePositionGene
+                
+                print("Mutation value for position: \(basePositionGene)")
+            } else {
+                mutatedSolution.positionCoordinatesGenes[index] = base.positionCoordinatesGenes[index]
             }
         }
         for index in 0...GameRules.numberOfWheelsInSolution - 1 {
@@ -38,7 +43,11 @@ struct Mutation {
                 let secondPositionGene = secondRandomSelectedSolution.wheelIndexesGenes[index]
                 let mutationValue = Double(scaleFactor * Double(firstPositionGene - secondPositionGene))
                 baseWheelPositionGene = Int(Double(baseWheelPositionGene) + mutationValue)
-                base.wheelIndexesGenes[index] = baseWheelPositionGene
+                mutatedSolution.wheelIndexesGenes[index] = baseWheelPositionGene
+                
+                print("Mutation value for wheel position: \(baseWheelPositionGene)")
+            } else {
+                mutatedSolution.wheelIndexesGenes[index] = base.wheelIndexesGenes[index]
             }
         }
         for index in 0...GameRules.numberOfWheelsInSolution - 1 {
@@ -48,16 +57,20 @@ struct Mutation {
                 let secondPositionGene = secondRandomSelectedSolution.wheelRadiusGenes[index]
                 let mutationValue = CGFloat(scaleFactor * Double(firstPositionGene - secondPositionGene))
                 baseWheelSizeGene = baseWheelSizeGene + mutationValue
-                base.wheelRadiusGenes[index] = baseWheelSizeGene
+                mutatedSolution.wheelRadiusGenes[index] = baseWheelSizeGene
+                
+                print("Mutation value for wheel size: \(baseWheelSizeGene)")
+
+            } else {
+                mutatedSolution.wheelRadiusGenes[index] = base.wheelRadiusGenes[index]
             }
         }
-        base.fixGenesIfBroken()
-        return base
+        mutatedSolution.fixGenesIfBroken()
+        return mutatedSolution
     }
     
     static func shouldMutate() -> Bool {
         let res = Utilities.sharedInstance.randomNumber(inRange: 0...100) < mutationRate
-        print(res)
         return res
     }
 }

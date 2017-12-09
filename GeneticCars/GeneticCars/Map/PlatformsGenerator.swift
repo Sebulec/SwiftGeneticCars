@@ -31,7 +31,16 @@ class PlatformsGenerator {
             platforms.append(lastInsertedPlatform!)
         }
         var newPlatforms : [SKNode] = []
-        for _ in 1...numberOfPlatforms {
+        for _ in 1...10 {
+            let lastStartingPoint = startingPoint
+            startingPoint = CGPoint(x: (startingPoint?.x)! + platformWidth + CGFloat(-25), y: (startingPoint?.y)! + platformHeight + CGFloat(-25))
+            let platform : Platform = Platform.init(startingPoint: startingPoint!, width: platformWidth, height: platformHeight)
+            let block = platform.getPlatform(p1: lastStartingPoint!, p2: startingPoint!, size: CGSize(width: (lastStartingPoint?.distance(point: startingPoint!))!, height: platformHeight))
+            block.physicsBody?.collisionBitMask = 1
+            block.physicsBody?.categoryBitMask = 1
+            newPlatforms.append(block)
+        }
+        for _ in 10...numberOfPlatforms {
             let lastStartingPoint = startingPoint
             startingPoint = CGPoint(x: (startingPoint?.x)! + platformWidth + CGFloat(Utilities.sharedInstance.randomNumber(inRange: -dificulty...dificulty)), y: (startingPoint?.y)! + platformHeight + CGFloat(Utilities.sharedInstance.randomNumber(inRange: -dificulty...dificulty)))
             let platform : Platform = Platform.init(startingPoint: startingPoint!, width: platformWidth, height: platformHeight)

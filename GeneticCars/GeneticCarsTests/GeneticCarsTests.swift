@@ -34,6 +34,8 @@ class GeneticCarsTests: XCTestCase {
             
             let mutatedSolution = Mutation.getMutatedSolution(base: solution, solutions: solutions)
             
+            
+            let crossOverSolution = Crossover.crossOver(firstSolution: solution, secondSolution: solutions[2])
             print("printed Solution: \(solution.positionCoordinatesGenes)")
             print("printed Solution quality: \(solution.score?.getCombinatedScore())")
         }
