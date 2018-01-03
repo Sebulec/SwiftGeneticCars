@@ -10,33 +10,53 @@ import Foundation
 import CoreGraphics
 
 class GeneticAlgorithm {
-    let populationSize = 10
+    let populationSize = 100
     var numberOfIteration = 0
     var bestSolutionOfAllTime : Solution?
+    var params : [String : Int] = ["groupSize" : 5]
     
-    let selectionType = SelectionType.rouletteWheel
+    var selectionIndex = 1
+//    let selectionType = SelectionType.tournament
     
     func getNextPopulation(previous: [Solution]) -> [Solution] {
         numberOfIteration += 1
+        var previousPopulation = previous
+        if numberOfIteration % 10 == 0 {
+            Simulator.makeValues(population: previousPopulation)
+            if numberOfIteration == 100 {
+                selectionIndex += 1
+                previousPopulation = initializePopulation()
+                numberOfIteration = 0
+                print("selection index \(selectionIndex)")
+            }
+            if selectionIndex == 2 {
+                print("RESULTS:")
+                Simulator.printValues()
+                exit(0)
+            }
+        }
         //create population
         var newPopulation : [Solution] = []
         for _ in 0...populationSize {
             // selection
-            let selectedSolution = Selection.selectSolutionsWithSelectionType(solutions: previous, selectionType: selectionType, ["groupSize" : 10])
+            let selectionType = Simulator.selectionTypes[selectionIndex]
+            let selectedSolution = Selection.selectSolutionsWithSelectionType(solutions: previousPopulation, selectionType: selectionType, params)
             // mutation
-            let mutatedSolution = Mutation.getMutatedSolution(base: selectedSolution, solutions: previous)
+            let mutatedSolution = Mutation.getMutatedSolution(base: selectedSolution, solutions: previousPopulation)
             // crossover
             let crossOverSolution = Crossover.crossOver(firstSolution: selectedSolution, secondSolution: mutatedSolution)
             newPopulation.append(crossOverSolution)
         }
         
-        let bestSolutionForPopulation = previous.filter({$0.score! > (bestSolutionOfAllTime?.score ?? SolutionScore())}).sorted(by: {$0.score! > $1.score!}).first
+        let bestSolutionForPopulation = previousPopulation.filter({$0.score > (bestSolutionOfAllTime?.score ?? SolutionScore())}).sorted(by: {$0.score > $1.score}).first
         if bestSolutionForPopulation != nil {
             bestSolutionOfAllTime = bestSolutionForPopulation
         }
-        print("Best distance \(String(describing: bestSolutionForPopulation?.score?.distance))")
+        print("Best distance \(String(describing: bestSolutionForPopulation?.score.distance))")
         return newPopulation
     }
+    
+    
     
     func initializePopulation() -> [Solution] {
         var population : [Solution] = []

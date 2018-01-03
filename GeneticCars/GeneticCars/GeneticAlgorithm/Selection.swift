@@ -16,10 +16,10 @@ struct Selection {
         case .rouletteWheel:
             let sumOfAllQualityFunctions : CGFloat = solutions.reduce(CGFloat(0), { (acc, solution) -> CGFloat in
                 var sum = acc
-                sum += solution.score?.getCombinatedScore() ?? CGFloat(0)
+                sum += solution.score.getCombinatedScore()
                 return sum
             })
-            let probabilitiesForSolutions = solutions.map({($0.score?.getCombinatedScore())! / sumOfAllQualityFunctions})
+            let probabilitiesForSolutions = solutions.map({($0.score.getCombinatedScore()) / sumOfAllQualityFunctions})
             let randomValue = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
             
             var index = 0
@@ -54,6 +54,6 @@ struct Selection {
     }
     
     static func sortBySolutionScore(solutions: [Solution]) -> [Solution] {
-        return solutions.sorted(by: {($0.score)! > ($1.score)!})
+        return solutions.sorted(by: {($0.score) > ($1.score)})
     }
 }

@@ -11,7 +11,7 @@ import CoreGraphics
 
 struct Mutation {
     
-    static let mutationRate = 20
+    static var mutationRate = 30
     static let scaleFactor = 1.0
     
     static func getMutatedSolution(base: Solution, solutions: [Solution]) -> Solution {

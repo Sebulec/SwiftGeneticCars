@@ -13,7 +13,7 @@ class Solution {
     var wheelIndexesGenes: [Int] = []
     var wheelRadiusGenes: [CGFloat] = []
     
-    var score: SolutionScore?
+    var score: SolutionScore = SolutionScore()
     
     init() {
         for _ in 0...GameRules.numberOfPointsInSolution*2 - 1 {
